@@ -36,15 +36,15 @@ def hello_world():
 
 @app.route('/insert', methods=['GET', 'POST'])
 def index():
-    # if request.method == "POST":
-    #     details = request.form
-    #     firstName = details['fname']
-    #     lastName = details['lname']
-    #     cur = mysql.connection.cursor()
-    #     cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
-    #     mysql.connection.commit()
-    #     cur.close()
-    #     return 'success'
+    if request.method == "POST":
+        details = request.form
+        firstName = details['fname']
+        lastName = details['lname']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
+        mysql.connection.commit()
+        cur.close()
+        return 'success'
     return render_template('index.html')
 
 
