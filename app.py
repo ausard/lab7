@@ -11,11 +11,11 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 BUCKET = "aliakseisabetskiaws"
 
-MYSQL_USER=environ['MYSQL_USER']
-MYSQL_PASSWORD=environ['MYSQL_PASSWORD']
-MYSQL_HOST=environ['MYSQL_HOST']
-# MYSQL_DATABASE=environ['MYSQL_DATABASE']
-MYSQL_DATABASE="test"
+# MYSQL_USER=environ['MYSQL_USER']
+# MYSQL_PASSWORD=environ['MYSQL_PASSWORD']
+# MYSQL_HOST=environ['MYSQL_HOST']
+# # MYSQL_DATABASE=environ['MYSQL_DATABASE']
+# MYSQL_DATABASE="test"
 
 # mysql = MySQL(app)
 
@@ -27,7 +27,7 @@ def hello_world():
     res = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>title</title></head>"
     res+="<body><div>Region: " + region + "</div>"
     res+="<div>Avialability zone: " + az + "</div>"
-    res+="a href=/insert>insert</a>"
+    res+="a href=/storage>storage</a>"
     res+="</body></html>"  
     return res
 
@@ -70,4 +70,4 @@ def download(filename):
         return send_file(output, as_attachment=True)
 
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=80)
