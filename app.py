@@ -19,17 +19,14 @@ def hello_world():
     res+="</body></html>"  
     return res
 
-if __name__ == "__main__":
-   app.run(host='0.0.0.0', port=80)
 
-
-@app.route("/storage")
+@app.route('/storage')
 def storage():
     contents = list_files(BUCKET)
     return render_template('storage.html', contents=contents)
 
 
-@app.route("/upload", methods=['POST'])
+@app.route('/upload', methods=['POST'])
 def upload():
     if request.method == "POST":
         f = request.files['file']
@@ -39,9 +36,12 @@ def upload():
         return redirect("/storage")
 
 
-@app.route("/download/<filename>", methods=['GET'])
+@app.route('/download/<filename>', methods=['GET'])
 def download(filename):
     if request.method == 'GET':
         output = download_file(filename, BUCKET)
 
         return send_file(output, as_attachment=True)
+        
+if __name__ == "__main__":
+   app.run(host='0.0.0.0', port=80)
