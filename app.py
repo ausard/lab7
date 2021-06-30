@@ -31,6 +31,8 @@ def hello_world():
     res+="<body><div>Region: " + region + "</div>"
     res+="<div>Avialability zone: " + az + "</div>"
     res+="<a href=/storage>storage</a>"
+    res+="<a href=/insert>insert</a>"
+    res+="<a href=/list>list</a>"
     res+="</body></html>"  
     return res
 
@@ -47,6 +49,16 @@ def index():
         return 'success'
     return render_template('index.html')
 
+@app.route('/list')
+def index():
+    cursor = mysql.connection.cursor() 
+    #execute select statement to fetch data to be displayed in combo/dropdown
+    cursor.execute('SELECT firstName,lastName FROM MyUsers') 
+    #fetch all rows ans store as a set of tuples 
+    joblist = cursor.fetchall() 
+    cursor.close()
+    #render template and send the set of tuples to the HTML file for displaying
+    return render_template("input.html",joblist=joblist )
 
 
 @app.route('/storage')
