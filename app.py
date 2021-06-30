@@ -50,7 +50,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/list')
-def index():
+def list():
     cursor = mysql.connection.cursor() 
     #execute select statement to fetch data to be displayed in combo/dropdown
     cursor.execute('SELECT firstName,lastName FROM MyUsers') 
