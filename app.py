@@ -9,17 +9,18 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 BUCKET = "aliakseisabetskiaws"
 
-
 @app.route('/')
-def entry_point():
-    # region=ec2_metadata.region
-    # az=ec2_metadata.availability_zone
-    # res = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>title</title></head>"
-    # res+="<body><div>Region: " + region + "</div>"
-    # res+="<div>Avialability zone: " + az + "</div>"
-    # res+="</body></html>"  
-    res="Hello World"
+def hello_world():
+    region=ec2_metadata.region
+    az=ec2_metadata.availability_zone
+    res = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>title</title></head>"
+    res+="<body><div>Region: " + region + "</div>"
+    res+="<div>Avialability zone: " + az + "</div>"
+    res+="</body></html>"  
     return res
+
+if __name__ == "__main__":
+   app.run(host='0.0.0.0', port=80)
 
 
 @app.route("/storage")
@@ -44,7 +45,3 @@ def download(filename):
         output = download_file(filename, BUCKET)
 
         return send_file(output, as_attachment=True)
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
