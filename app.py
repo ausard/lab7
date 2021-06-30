@@ -11,12 +11,15 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 BUCKET = "aliakseisabetskiaws"
 
-MYSQL_USER=environ['MYSQL_USER']
-MYSQL_PASSWORD=environ['MYSQL_PASSWORD']
-MYSQL_HOST=environ['MYSQL_HOST']
-# MYSQL_DATABASE=environ['MYSQL_DATABASE']
-MYSQL_DATABASE="test"
-
+# MYSQL_USER=environ['MYSQL_USER']
+# MYSQL_PASSWORD=environ['MYSQL_PASSWORD']
+# MYSQL_HOST=environ['MYSQL_HOST']
+# # MYSQL_DATABASE=environ['MYSQL_DATABASE']
+# MYSQL_DATABASE="test"
+app.config['MYSQL_HOST'] = environ['MYSQL_HOST']
+app.config['MYSQL_USER'] = environ['MYSQL_USER']
+app.config['MYSQL_PASSWORD'] = environ['MYSQL_PASSWORD']
+app.config['MYSQL_DB'] = 'test'
 mysql = MySQL(app)
 
 
