@@ -12,12 +12,12 @@ UPLOAD_FOLDER = "uploads"
 BUCKET = "aliakseisabetskiaws"
 
 MYSQL_USER=environ['MYSQL_USER']
-MYSQL_PASSWORD=environ['MYSQL_PASS']
+MYSQL_PASSWORD=environ['MYSQL_PASSWORD']
 MYSQL_HOST=environ['MYSQL_HOST']
 # MYSQL_DATABASE=environ['MYSQL_DATABASE']
 MYSQL_DATABASE="test"
 
-mysql = MySQL(app)
+# mysql = MySQL(app)
 
 
 @app.route('/')
@@ -31,18 +31,18 @@ def hello_world():
     res+="</body></html>"  
     return res
 
-@app.route('/insert', methods=['GET', 'POST'])
-def index():
-    if request.method == "POST":
-        details = request.form
-        firstName = details['fname']
-        lastName = details['lname']
-        cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
-        mysql.connection.commit()
-        cur.close()
-        return 'success'
-    return render_template('index.html')
+# @app.route('/insert', methods=['GET', 'POST'])
+# def index():
+#     if request.method == "POST":
+#         details = request.form
+#         firstName = details['fname']
+#         lastName = details['lname']
+#         cur = mysql.connection.cursor()
+#         cur.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
+#         mysql.connection.commit()
+#         cur.close()
+#         return 'success'
+#     return render_template('index.html')
 
 
 
