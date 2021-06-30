@@ -13,3 +13,4 @@ s3transfer==0.2.1
 six==1.15.0
 urllib3==1.25.11 ; python_version >= '3.4'
 werkzeug==1.0.1
+ec2-metadata==2.4.0
