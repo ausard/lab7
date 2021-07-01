@@ -30,9 +30,9 @@ def hello_world():
     res = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>title</title></head>"
     res+="<body><div>Region: " + region + "</div>"
     res+="<div>Avialability zone: " + az + "</div>"
-    res+="<a href=/storage>storage</a>"
-    res+="<a href=/insert>insert</a>"
-    res+="<a href=/list>list</a>"
+    res+="<a href=/storage>storage</a><br>"
+    res+="<a href=/insert>insert</a><br>"
+    res+="<a href=/list>list</a><br>"
     res+="</body></html>"  
     return res
 
