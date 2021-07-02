@@ -1,3 +1,9 @@
+create database if not exists `test`;
+
+USE `test`;
+
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+
 /*Table structure for table `test` */
 
 CREATE TABLE IF NOT EXISTS `test` (
