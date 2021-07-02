@@ -9,14 +9,14 @@ from os import environ
 
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
-# BUCKET = environ['S3_BUCKET']
-BUCKET ="aliakseisabetskiaws"
+BUCKET = environ['S3_BUCKET']
+# BUCKET ="aliakseisabetskiaws"
 
-# app.config['MYSQL_HOST'] = environ['MYSQL_HOST']
-# app.config['MYSQL_USER'] = environ['MYSQL_USER']
-# app.config['MYSQL_PASSWORD'] = environ['MYSQL_PASSWORD']
-# app.config['MYSQL_DB'] = 'test'
-# mysql = MySQL(app)
+app.config['MYSQL_HOST'] = environ['MYSQL_HOST']
+app.config['MYSQL_USER'] = environ['MYSQL_USER']
+app.config['MYSQL_PASSWORD'] = environ['MYSQL_PASSWORD']
+app.config['MYSQL_DB'] = 'test'
+mysql = MySQL(app)
 
 
 @app.route('/')
