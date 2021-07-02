@@ -3,7 +3,7 @@ import os
 from flask import Flask, render_template, request, redirect, send_file, url_for
 from ec2_metadata import ec2_metadata
 from s3_demo import list_files, download_file, upload_file
-# from flask_mysqldb import MySQL
+from flask_mysqldb import MySQL
 from os import environ
 
 
