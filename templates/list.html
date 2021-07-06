@@ -37,16 +37,6 @@
       </nav>
       <div class="container">
         <div class="row">
-          <h3>Upload your file here:</h3>
-          <form method="POST" action="/upload" enctype=multipart/form-data>
-            <div class="mb-3">
-              <label for="formFile" class="form-label">Image file input </label>
-              <input class="form-control" type="file" id="formFile" name="file" accept="image/jpeg">
-            </div>
-            <input class="form-control" type=submit value=Upload>
-          </form>
-        </div>
-        <div class="row">
           <h3>These are your uploaded files:</h3>
           <p>Click on the filename to download it.</p>
           <ul>
@@ -58,26 +48,25 @@
                   <th scope="col">date</th>
                   <th scope="col">size</th>
                   <th scope="col">ext</th>
-                  <th scope="col">#</th>
                 </tr>
               </thead>
               <tbody>
             {% for item in contents %}
             <tr>
               <th scope="row">{{ item[0] }} </th>
-              <td class="align">
-                <img src="https://{{bucket}}.s3.eu-central-1.amazonaws.com/{{ item[1] }}" class="img-fluid" alt="" width="100" height="100">  
+              <td>
+                <img src="https://{{bucket}}.s3.eu-central-1.amazonaws.com/{{ item[1] }}" class="img-fluid" alt="" width="200" height="200"> 
               </td>
               <td>{{ item[2] }} </td>
               <td>{{ item[3] }} </td>
               <td>{{ item[4] }} </td>
-              <td>
-                <a href="https://{{bucket}}.s3.eu-central-1.amazonaws.com/{{ item[1] }}" class="btn btn-primary btn-lg" tabindex="-1" role="button" >Donwload</a>
-               </td>
             </tr>
             {% endfor %}
           </tbody>
         </table>
+        <!-- {% for item in contents %}            
+            <img src="https://{{bucket}}.s3.eu-central-1.amazonaws.com/{{ item[1] }}" class="img-fluid" alt=""> 
+            {% endfor %} -->
           </ul>
         </div>
     </div>
