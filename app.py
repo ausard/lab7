@@ -26,8 +26,8 @@ def getMysqlConnection():
 
 @app.route('/')
 def hello_world():
-    region="ec2_metadata.region"
-    az="ec2_metadata.availability_zone"
+    region=ec2_metadata.region
+    az=ec2_metadata.availability_zone
     return render_template('index.html', az=az, region=region)
 
 
