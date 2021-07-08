@@ -42,50 +42,36 @@
       </nav>
       <div class="container">
         <div class="row">
-          <h3>Upload your file here:</h3>
-          <form method="POST" action="/upload" enctype=multipart/form-data>
-            <div class="mb-3">
-              <label for="formFile" class="form-label">Image file input </label>
-              <input class="form-control" type="file" id="formFile" name="file" accept="image/jpeg">
-            </div>
-            <input class="form-control" type=submit value=Upload>
-          </form>
+            {% if subscribe  %}
+            <div class="card text-center">
+                <div class="card-header">
+                    Subscribe
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Subscribe</h5>
+                  <p class="card-text">You have chosen to subscribe to the topic:
+                    <b>{{ topic }}</b><br>                   
+                    To confirm this subscription, check your email and confirm subscription</p>
+                  <a href="/" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>        
+            {% endif %}
+            {% if not subscribe  %}
+            <div class="card text-center">
+                <div class="card-header">
+                    Unsubscribe
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Subscribe</h5>
+                  <p class="card-text">You have to unsubscribe to the topic:
+                    <b>{{ topic }}</b><br>                   
+                    </p>
+                  <a href="/" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>        
+            {% endif %}
         </div>
-        <div class="row">
-          <h3>These are your uploaded files:</h3>
-          <p>Click on the filename to download it.</p>
-          <ul>
-            <table class="table table-dark table-striped table-hover table-sm">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">date</th>
-                  <th scope="col">size</th>
-                  <th scope="col">ext</th>
-                  <th scope="col">#</th>
-                </tr>
-              </thead>
-              <tbody>
-            {% for item in contents %}
-            <tr>
-              <th scope="row">{{ item[0] }} </th>
-              <td class="align">
-                <img src="https://{{bucket}}.s3.eu-central-1.amazonaws.com/{{ item[1] }}" class="img-fluid" alt="" width="100" height="100">  
-              </td>
-              <td>{{ item[2] }} </td>
-              <td>{{ item[3] }} </td>
-              <td>{{ item[4] }} </td>
-              <td>
-                <a href="https://{{bucket}}.s3.eu-central-1.amazonaws.com/{{ item[1] }}" class="btn btn-primary btn-lg" tabindex="-1" role="button" >Donwload</a>
-               </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-          </ul>
-        </div>
-    </div>
+      </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
