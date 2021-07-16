@@ -99,6 +99,14 @@ def storage():
         db.close()
     return render_template('storage.html', contents=images, bucket=BUCKET)
 
+@app.route('/invoke')
+def invoke():
+    lambda_client = boto3.client('lambda')
+    function_name = environ['LAMBDA_NAME']
+    lambda_client.invoke(FunctionName=function_name, 
+                        InvocationType='RequestResponse',)
+    return render_template('invoke.html', function=function_name)
+
 
 
 @app.route('/upload', methods=['POST'])
