@@ -30,9 +30,9 @@ def sensor():
 
 
 
-sched = BackgroundScheduler(daemon=True)
-sched.add_job(sensor,'interval',seconds=15)
-sched.start()
+# sched = BackgroundScheduler(daemon=True)
+# sched.add_job(sensor,'interval',seconds=15)
+# sched.start()
 
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
