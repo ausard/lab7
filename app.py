@@ -48,8 +48,8 @@ def getMysqlConnection():
 
 @app.route('/')
 def hello_world():
-    region=ec2_metadata.region
-    az=ec2_metadata.availability_zone
+    region='ec2_metadata.region'
+    az='ec2_metadata.availability_zone'
     return render_template('index.html', az=az, region=region)
 
 @app.route('/list')
@@ -101,7 +101,8 @@ def storage():
 
 @app.route('/invoke')
 def invoke():
-    lambda_client = boto3.client('lambda')
+    lambda_client = boto3.client('lambda',
+        region_name='eu-central-1')
     function_name = environ['LAMBDA_NAME']
     lambda_client.invoke(FunctionName=function_name, 
                         InvocationType='RequestResponse',)
