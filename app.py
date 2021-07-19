@@ -104,8 +104,12 @@ def invoke():
     lambda_client = boto3.client('lambda',
         region_name='eu-central-1')
     function_name = environ['LAMBDA_NAME']
+    inputParams = {
+        "detail-type"   : "from App",
+    }
     lambda_client.invoke(FunctionName=function_name, 
-                        InvocationType='RequestResponse',)
+                        InvocationType='RequestResponse',
+                        Payload = json.dumps(inputParams))
     return render_template('invoke.html', function=function_name)
 
 
